@@ -12,14 +12,9 @@ struct ContentView: View {
     let data = Item.getSampleData()
     
     var body: some View {
-        NavigationView {
-            
-            VStack {
-                List(data, id: \.id, children: \.children) { item in
-                    Text(item.name)
-                }
-            }
-        }
+        List(data, id: \.id, children: \.children) { item in
+            Text(item.name)
+        }.listStyle(SidebarListStyle())
     }
 }
 
@@ -45,21 +40,21 @@ struct Item: Codable {
     static func getSampleData() -> [Item] {
         
         [
-            Item(name: "One"),
+            Item(name: "Item 00"),
             Item(
-                name: "Two",
+                name: "Item 01",
                 children: [
                     Item(
-                        name: "SubitemOne",
+                        name: "Item 10",
                         children: [
-                            Item(name: "LastOne"),
-                            Item(name: "LastTwo"),
+                            Item(name: "Item 20"),
+                            Item(name: "Item 21"),
                         ]
                     ),
-                    Item(name: "SubitemTwo"),
+                    Item(name: "Item 11"),
                 ]
             ),
-            Item(name: "Three"),
+            Item(name: "Item 02"),
         ]
     }
     
