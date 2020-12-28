@@ -25,20 +25,13 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct Item: Codable {
+struct Item {
     
-    let id: UUID
+    let id: UUID = UUID()
     let name: String
-    let children: [Item]?
-    
-    init(id: UUID = UUID(), name: String, children: [Item]? = nil) {
-        self.id = id
-        self.name = name
-        self.children = children
-    }
+    var children: [Item]? = nil
     
     static func getSampleData() -> [Item] {
-        
         [
             Item(name: "Item 00"),
             Item(
